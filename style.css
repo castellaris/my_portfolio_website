@@ -1,0 +1,268 @@
+/* Основной шрифт для всей страницы */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background-color: #c9c7c7;
+    color: #222;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Обертка */
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding: 0 40px;
+    background-color: #e4a362;
+}
+
+header img {
+    display: block;
+    border-radius: 8px;
+}
+
+/* Навигация */
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 24px; /* Промежуток между кнопками */
+}
+
+nav .nav-link {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff !important;
+    transition: color 0.2s;
+}
+
+nav .nav-link:hover {
+    color: #ffd700 !important;
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    font-weight: 700;
+    color: #e4a362;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+/* Main */
+main {
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #e4a362;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+}
+
+/* Карточки услуг и работ подстраиваются под контент */
+.card {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: none;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #e4a362;
+}
+
+.card-title, .card-text, .card-body ul {
+    word-break: break-word;
+}
+
+.card-text, .card-body ul {
+    font-size: 1rem;
+    color: #333;
+    font-family: inherit;
+}
+
+.card-body ul {
+    padding-left: 1.2em;
+}
+
+/* Картинки в карточках автоматически подстраиваются по ширине */
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px 8px 0 0;
+    max-height: 300px;
+}
+
+/* Картинки */
+img {
+    border-radius: 8px;
+}
+
+/* Для мобильных — карточки на всю ширину */
+@media (max-width: 767.98px) {
+    .card {
+        max-width: 100%;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Для десктопа — карточки равномерно по ширине */
+@media (min-width: 768px) {
+    .photos .card,
+    .services .card {
+        max-width: 100%;
+    }
+}
+
+/* Стили для горизонтального расположения блоков section на больших экранах */
+@media (min-width: 768px) {
+    .services .card-body > ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-left: 0;
+        list-style: none;
+    }
+    .services .card-body > ul > li {
+        flex: 1 1 30%;
+        min-width: 220px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    main {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    main section {
+        flex: 1 1 0;
+        max-width: 600px;
+    }
+}
+
+/* Вертикальное расположение блоков section на маленьких экранах */
+@media (max-width: 767.98px) {
+    .services .card-body > ul {
+        display: block;
+        padding-left: 0;
+    }
+    .services .card-body > ul > li {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    main {
+        display: block;
+    }
+    main section {
+        max-width: 100%;
+    }
+}
+
+/* Адаптивность для header и навигации */
+@media (max-width: 991.98px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 10px;
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+    }
+}
+
+/* Адаптивность для карточек с фотографиями */
+@media (max-width: 991.98px) {
+    .photos .row > div[class^="col-"] {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .photos .card {
+        margin-bottom: 24px;
+    }
+}
+
+/* Адаптивность для секций и контейнеров */
+@media (max-width: 767.98px) {
+    .container, .card, .card-body {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+    .card {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .card-text, .card-body ul {
+        font-size: 0.97rem;
+    }
+    .photos .row {
+        gap: 0.5rem !important;
+    }
+}
+
+/* Адаптивность для изображений */
+@media (max-width: 575.98px) {
+    .card-img-top {
+        max-height: 180px;
+    }
+    header img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+}
+
+/* Адаптивность для footer */
+@media (max-width: 575.98px) {
+    footer {
+        font-size: 0.95rem;
+        padding: 14px 4px;
+    }
+}
