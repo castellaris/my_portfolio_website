@@ -5,6 +5,7 @@ body {
     color: #222;
     min-height: 100vh;
     margin: 0;
+    overflow-x: hidden;
 }
 
 /* Обертка */
@@ -35,7 +36,7 @@ nav ul {
     padding: 0;
     list-style: none;
     display: flex;
-    gap: 24px; /* Промежуток между кнопками */
+    gap: 24px;
 }
 
 nav .nav-link {
@@ -44,6 +45,8 @@ nav .nav-link {
     font-weight: 500;
     color: #fff !important;
     transition: color 0.2s;
+    padding: 8px 12px;
+    display: inline-block;
 }
 
 nav .nav-link:hover {
@@ -78,7 +81,7 @@ footer {
     line-height: 1.6;
 }
 
-/* Карточки услуг и работ подстраиваются под контент */
+/* Карточки */
 .card {
     width: 100%;
     height: auto;
@@ -102,9 +105,6 @@ footer {
     font-size: 1.35rem;
     font-weight: 600;
     color: #e4a362;
-}
-
-.card-title, .card-text, .card-body ul {
     word-break: break-word;
 }
 
@@ -112,13 +112,14 @@ footer {
     font-size: 1rem;
     color: #333;
     font-family: inherit;
+    word-break: break-word;
 }
 
 .card-body ul {
     padding-left: 1.2em;
 }
 
-/* Картинки в карточках автоматически подстраиваются по ширине */
+/* Картинки */
 .card-img-top {
     width: 100%;
     height: auto;
@@ -127,31 +128,150 @@ footer {
     max-height: 300px;
 }
 
-/* Картинки */
 img {
     border-radius: 8px;
 }
 
-/* Для мобильных — карточки на всю ширину */
-@media (max-width: 767.98px) {
-    .card {
-        max-width: 100%;
+/* Адаптивность — мобильные устройства */
+@media (max-width: 991.98px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 10px;
+        text-align: center;
     }
-    h2 {
-        font-size: 1.3rem;
+
+    nav ul {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .photos .row > div[class^="col-"] {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .photos .card {
+        margin-bottom: 24px;
     }
 }
 
-/* Для десктопа — карточки равномерно по ширине */
+@media (max-width: 767.98px) {
+    .card {
+        max-width: 100%;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text, .card-body ul {
+        font-size: 0.97rem;
+    }
+
+    .photos .row {
+        gap: 0.5rem !important;
+    }
+
+    .services .card-body > ul {
+        display: block;
+        padding-left: 0;
+    }
+
+    .services .card-body > ul > li {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    main {
+        display: block;
+    }
+
+    main section {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+
+    .container, .card-body {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .card-img-top {
+        max-height: 180px;
+    }
+
+    header img {
+        width: 70px !important;
+        height: 70px !important;
+    }
+
+    footer {
+        font-size: 0.95rem;
+        padding: 14px 4px;
+    }
+}
+
+/* Дополнительная адаптация для узких экранов */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    header {
+        padding: 12px 8px;
+    }
+
+    nav ul {
+        gap: 8px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text, .card-body ul {
+        font-size: 0.9rem;
+    }
+
+    .card-body ul > li {
+        padding: 12px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+        padding: 12px 4px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-body ul > li {
+        flex: 1 1 100%;
+        min-width: auto;
+    }
+
+    .services .card-body > ul {
+        gap: 12px;
+    }
+}
+
+/* Адаптация для десктопа */
 @media (min-width: 768px) {
     .photos .card,
     .services .card {
         max-width: 100%;
     }
-}
 
-/* Стили для горизонтального расположения блоков section на больших экранах */
-@media (min-width: 768px) {
     .services .card-body > ul {
         display: flex;
         flex-wrap: wrap;
@@ -159,6 +279,7 @@ img {
         padding-left: 0;
         list-style: none;
     }
+
     .services .card-body > ul > li {
         flex: 1 1 30%;
         min-width: 220px;
@@ -168,102 +289,16 @@ img {
         margin-bottom: 0;
         box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
+
     main {
         display: flex;
         gap: 32px;
         align-items: flex-start;
         justify-content: center;
     }
+
     main section {
         flex: 1 1 0;
         max-width: 600px;
     }
 }
-
-/* Вертикальное расположение блоков section на маленьких экранах */
-@media (max-width: 767.98px) {
-    .services .card-body > ul {
-        display: block;
-        padding-left: 0;
-    }
-    .services .card-body > ul > li {
-        background: #f8f9fa;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-    main {
-        display: block;
-    }
-    main section {
-        max-width: 100%;
-    }
-}
-
-/* Адаптивность для header и навигации */
-@media (max-width: 991.98px) {
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 16px 10px;
-        text-align: center;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 12px;
-    }
-}
-
-/* Адаптивность для карточек с фотографиями */
-@media (max-width: 991.98px) {
-    .photos .row > div[class^="col-"] {
-        max-width: 100%;
-        flex: 0 0 100%;
-    }
-    .photos .card {
-        margin-bottom: 24px;
-    }
-}
-
-/* Адаптивность для секций и контейнеров */
-@media (max-width: 767.98px) {
-    .container, .card, .card-body {
-        padding-left: 8px !important;
-        padding-right: 8px !important;
-    }
-    .card {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    .card-title {
-        font-size: 1.1rem;
-    }
-    .card-text, .card-body ul {
-        font-size: 0.97rem;
-    }
-    .photos .row {
-        gap: 0.5rem !important;
-    }
-}
-
-/* Адаптивность для изображений */
-@media (max-width: 575.98px) {
-    .card-img-top {
-        max-height: 180px;
-    }
-    header img {
-        width: 70px !important;
-        height: 70px !important;
-    }
-}
-
-/* Адаптивность для footer */
-@media (max-width: 575.98px) {
-    footer {
-        font-size: 0.95rem;
-        padding: 14px 4px;
-    }
-}
-
